@@ -3,6 +3,8 @@ from tkinter import ttk
 import requests
 from PIL import Image, ImageTk
 
+# Used https://flagcdn.com/h60/us.png for flag images and Google for currency images
+
 # --- Size and options ---
 compare_currency = "USD"  # Fixed currency to compare to
 FLAG_SIZE = (120, 80)

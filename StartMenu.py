@@ -6,7 +6,7 @@ root.title("Startmenu")
 root.geometry("300x200")
 
 # Overskrift oprettes
-overskrift = tk.Label(root, text="Velkommen til Fodboldtur App", font=("Arial", 12))
+overskrift = tk.Label(root, text="Velkommen til valuta-visualisering App", font=("Arial", 12))
 overskrift.pack(pady=10)
 
 # Knap 1

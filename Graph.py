@@ -46,9 +46,9 @@ for valuta in valutas:
         ys.append(rate_dict[valuta])
     plt.plot(xs, ys, label=valuta)
 
-plt.title(f"Valutakurser relativt til {base}")
-plt.xlabel("Dage siden startdato")
-plt.ylabel("Kurs")
+plt.title(f"Valutakurser relativt til {base}", fontsize=15)
+plt.xlabel("Dage siden startdato", fontsize = 12)
+plt.ylabel("Kurs", fontsize = 12)
 plt.legend()
 plt.grid(True)
 plt.show()

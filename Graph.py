@@ -34,7 +34,6 @@ def get_supported_currencies():
 currencies = get_supported_currencies()
 for code, name in currencies.items():
     print(f"{code}: {name}")
-# Slut liste
 
 valutas = ["USD", "DKK", "GBP"]
 base = input("Indtast basisvaluta (fx EUR, USD, AUD): ").upper()
@@ -62,5 +61,3 @@ plt.ylabel("Kurs", fontsize = 12)
 plt.legend()
 plt.grid(True)
 plt.show()
-
-

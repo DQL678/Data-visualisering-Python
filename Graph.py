@@ -25,9 +25,18 @@ def get_data(valutas, base):
     data = response.json()
     return format_json(data)
 
+# Liste of alle valutaer
+def get_supported_currencies():
+    url2 = "https://api.frankfurter.dev/v1/currencies"
+    response = requests.get(url2)
+    return response.json()
+
+currencies = get_supported_currencies()
+for code, name in currencies.items():
+    print(f"{code}: {name}")
 
 valutas = ["USD", "DKK", "GBP"]
-base = "AUD"
+base = input("Indtast basisvaluta (fx EUR, USD, AUD): ").upper()
 data = get_data(valutas, base)
 
 # Lidt info

@@ -10,7 +10,7 @@ compare_currency = "USD"  # Fixed currency to compare to
 FLAG_SIZE = (120, 80)
 CURRENCY_IMG_SIZE = (200, 100)
 
-available_currencies = ["EUR", "GBP", "AUD", "USD"]  # Currency options in drop-menu
+available_currencies = ["EUR", "GBP", "AUD", "USD", "JPY", "CNY"]  # Currency options in drop-menu
 
 # --- Window ---
 window = tk.Tk()
@@ -72,7 +72,7 @@ def update_currency(base_currency):
         date_text.config(text=f"Rate Date: {date}")
 
     except Exception as e:
-        currency_text.config(text="Error fetching data")
+        currency_text.config(text="Error grabbing data")
         rate_text.config(text=str(e))
         date_text.config(text="")
 
@@ -86,16 +86,6 @@ def on_currency_change(event):
     update_currency(selected_currency.get())
 
 dropdown.bind("<<ComboboxSelected>>", on_currency_change)
-
-# --- Responsive Font Resize ---
-def resize_fonts(event):
-    scale = event.width / 380  # 380 is original window width
-    min_font = 8  # Prevent font from getting too small
-
-    title_label.config(font=("Arial", max(int(16 * scale), min_font), "bold"))
-    currency_text.config(font=("Arial", max(int(12 * scale), min_font)))
-    rate_text.config(font=("Arial", max(int(12 * scale), min_font)))
-    date_text.config(font=("Arial", max(int(10 * scale), min_font)))
 
 # --- Initial update ---
 update_currency(selected_currency.get())

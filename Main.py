@@ -151,7 +151,7 @@ def open_currency_comparison():
 
     win = tk.Toplevel()
     win.title("Currency Comparison")
-    win.geometry("400x200")
+    win.geometry("450x200")
 
     var1 = tk.StringVar(value=available_currencies[0])
     var2 = tk.StringVar(value=available_currencies[1])

@@ -10,7 +10,7 @@ def open_currency_info():
     compare_currency = "USD"
     FLAG_SIZE = (120, 80)
     CURRENCY_IMG_SIZE = (200, 100)
-    available_currencies = ["EUR", "GBP", "AUD", "USD"]
+    available_currencies = ["DKK","EUR", "GBP", "AUD", "CAD", "USD", "JPY", "CNY" ]
 
     window = tk.Toplevel()
     window.title("Facts about currency")

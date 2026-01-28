@@ -22,7 +22,7 @@ def open_currency_comparison():
     available_currencies = ["DKK", "EUR", "GBP", "AUD", "USD", "JPY", "CNY"]
 
     # Vindue
-    win = tk.Tk()
+    win = tk.Toplevel()
     win.title("Currency Comparison")
     win.geometry("450x200")
 

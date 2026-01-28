@@ -15,7 +15,7 @@ def open_currency_info():
     available_currencies = ["DKK","EUR", "GBP", "AUD", "CAD", "USD", "JPY", "CNY" ]  # Currency options in drop-menu
 
     # --- Window ---
-    window = tk.Tk()
+    window = tk.Toplevel()
     window.title("Facts about currency")
     window.geometry("380x500")
 

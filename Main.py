@@ -4,11 +4,10 @@ import requests
 from PIL import Image, ImageTk
 import matplotlib.pyplot as plt
 import datetime
+import os
 from FactsAboutCurrency import open_currency_info
 from CurrencyComparison import open_currency_comparison
 from Graph import open_currency_graph
-
-
 
 
 # --- STARTMENU ---

@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 import requests
 
+
 def open_currency_comparison():
     def compare():
         c1 = var1.get()
@@ -43,4 +44,5 @@ def open_currency_comparison():
     win.mainloop()
 
 # Kør standalone
-open_currency_comparison()
+if __name__ == "__main__":
+    open_currency_comparison()

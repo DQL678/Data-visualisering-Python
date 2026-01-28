@@ -93,6 +93,6 @@ def open_currency_info():
     update_currency(selected_currency.get())
 
     window.mainloop()
-
+# Kør standalone
 if __name__ == "__main__":
     open_currency_info()

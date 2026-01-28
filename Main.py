@@ -10,7 +10,7 @@ def open_currency_info():
     compare_currency = "USD"
     FLAG_SIZE = (120, 80)
     CURRENCY_IMG_SIZE = (200, 100)
-    available_currencies = ["EUR", "GBP", "AUD", "USD"]
+    available_currencies = ["DKK","EUR", "GBP", "AUD", "CAD", "USD", "JPY", "CNY"]
 
     window = tk.Toplevel()
     window.title("Facts about currency")
@@ -147,11 +147,11 @@ def open_currency_comparison():
         except Exception as e:
             result_label.config(text="Fejl: " + str(e))
 
-    available_currencies = ["DKK", "EUR", "GBP", "AUD", "USD", "JPY", "CNY"]
+    available_currencies = ["DKK","EUR", "GBP", "AUD", "CAD", "USD", "JPY", "CNY" ]
 
     win = tk.Toplevel()
     win.title("Currency Comparison")
-    win.geometry("400x200")
+    win.geometry("450x200")
 
     var1 = tk.StringVar(value=available_currencies[0])
     var2 = tk.StringVar(value=available_currencies[1])

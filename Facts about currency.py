@@ -10,7 +10,7 @@ compare_currency = "USD"  # Fixed currency to compare to
 FLAG_SIZE = (120, 80)
 CURRENCY_IMG_SIZE = (200, 100)
 
-available_currencies = ["DKK","EUR", "GBP", "AUD", "USD", "JPY", "CNY", ]  # Currency options in drop-menu
+available_currencies = ["DKK","EUR", "GBP", "AUD", "CAD", "USD", "JPY", "CNY" ]  # Currency options in drop-menu
 
 # --- Window ---
 window = tk.Tk()

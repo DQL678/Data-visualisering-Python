@@ -22,27 +22,61 @@ def open_currency_graph():
         }
 
     def get_data(valutas, base):
+        # Fjern basisvaluta hvis den findes i listen
+        if base in valutas:
+            valutas = [v for v in valutas if v != base]
+
         url = f"https://api.frankfurter.dev/v1/1999-01-01..?base={base}&symbols={','.join(valutas)}"
         response = requests.get(url)
         data = response.json()
-        return format_json(data)
+        return format_json(data), valutas
 
-    valutas = ["USD", "DKK", "GBP"]
-    base = "AUD"
-    data = get_data(valutas, base)
+    def get_supported_currencies():
+        url2 = "https://api.frankfurter.dev/v1/currencies"
+        response = requests.get(url2)
+        return response.json()
 
-    plt.figure(figsize=(10,5))
+    # Udskriv alle valutaer
+    currencies = get_supported_currencies()
+    for code, name in currencies.items():
+        print(f"{code}: {name}")
+
+    # Brugeren vælger selv valutaer
+    valuta_input = input("Indtast valutaer der skal sammenlignes (fx USD, DKK, GBP): ")
+    valutas = [v.strip().upper() for v in valuta_input.split(",")]
+
+    # Brugeren vælger basisvaluta
+    base = input("Indtast kun 1 basisvaluta (fx EUR, USD, AUD): ").upper()
+
+    # Hent data og opdateret valutaliste
+    data, valutas = get_data(valutas, base)
+
+    # Fjern valutaer der slet ikke findes i API-data
+    valutas = [v for v in valutas if any(v in r for r in data["rates"].values())]
+
+    # Lidt info
+    print("Base:", data["base"])
+    print("Start:", data["start"])
+    print("End:", data["end"])
+
+    # Plot valutakurser
+    plt.figure(figsize=(10, 5))
+
     for valuta in valutas:
         xs = []
         ys = []
         for day, rate_dict in data["rates"].items():
+            if valuta not in rate_dict:
+                continue  # spring dage uden data over
             xs.append(day)
             ys.append(rate_dict[valuta])
-        plt.plot(xs, ys, label=valuta)
 
-    plt.title(f"Valutakurser relativt til {base}")
-    plt.xlabel("Dage siden startdato")
-    plt.ylabel("Kurs")
+        if xs:  # kun plot hvis der faktisk er data
+            plt.plot(xs, ys, label=valuta)
+
+    plt.title(f"Valutakurser relativt til {base}", fontsize=15)
+    plt.xlabel("Dage siden 01-04-1999", fontsize=12)
+    plt.ylabel("Kurs", fontsize=12)
     plt.legend()
     plt.grid(True)
     plt.show()

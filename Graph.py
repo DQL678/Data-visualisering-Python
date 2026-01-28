@@ -20,10 +20,14 @@ def format_json(data):
     }
 
 def get_data(valutas, base):
+    # Fjern basisvaluta hvis den findes i listen
+    if base in valutas:
+        valutas = [v for v in valutas if v != base]
+
     url = f"https://api.frankfurter.dev/v1/1999-01-01..?base={base}&symbols={','.join(valutas)}"
     response = requests.get(url)
     data = response.json()
-    return format_json(data)
+    return format_json(data), valutas
 
 # Liste of alle valutaer
 def get_supported_currencies():
@@ -36,8 +40,9 @@ for code, name in currencies.items():
     print(f"{code}: {name}")
 
 valutas = ["USD", "DKK", "GBP"]
-base = input("Indtast basisvaluta (fx EUR, USD, AUD): ").upper()
-data = get_data(valutas, base)
+base = input("Indtast basisvaluta (fx EUR, CAD, SEK): ").upper()
+
+data, valutas = get_data(valutas, base)
 
 # Lidt info
 print("Base:", data["base"])
@@ -56,8 +61,8 @@ for valuta in valutas:
     plt.plot(xs, ys, label=valuta)
 
 plt.title(f"Valutakurser relativt til {base}", fontsize=15)
-plt.xlabel("Dage siden startdato", fontsize = 12)
-plt.ylabel("Kurs", fontsize = 12)
+plt.xlabel("Dage siden startdato", fontsize=12)
+plt.ylabel("Kurs", fontsize=12)
 plt.legend()
 plt.grid(True)
 plt.show()

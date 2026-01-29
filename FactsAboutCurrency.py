@@ -5,7 +5,7 @@ from PIL import Image, ImageTk
 
 # Used https://flagcdn.com/h60/us.png for flag images and Google for currency images
 
-def open_currency_info():
+def open_currency_info(parent):
 
     # --- Size and options ---
     compare_currency = "USD"  # Fixed currency to compare to
@@ -15,7 +15,7 @@ def open_currency_info():
     available_currencies = ["DKK","EUR", "GBP", "AUD", "CAD", "USD", "JPY", "CNY" ]  # Currency options in drop-menu
 
     # --- Window ---
-    window = tk.Toplevel()
+    window = tk.Toplevel(parent)
     window.title("Facts about currency")
     window.geometry("380x500")
 
@@ -91,8 +91,3 @@ def open_currency_info():
 
     # --- Initial update ---
     update_currency(selected_currency.get())
-
-    window.mainloop()
-# Kør standalone
-if __name__ == "__main__":
-    open_currency_info()

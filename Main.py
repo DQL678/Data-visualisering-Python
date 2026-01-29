@@ -18,7 +18,7 @@ root.geometry("300x200")
 overskrift = tk.Label(root, text="Welcome to the currency visualization app", font=("Arial", 12))
 overskrift.pack(pady=10)
 
-knap1 = tk.Button(root, text="Currency Information", command=open_currency_info)
+knap1 = tk.Button(root, text="Currency Information", command=lambda:open_currency_info(root))
 knap1.pack(pady=5)
 
 knap2 = tk.Button(root, text="Currency Comparison", command=open_currency_comparison)
